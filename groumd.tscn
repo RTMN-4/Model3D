@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://y46ffrwvrj2r"]
+
+[ext_resource type="Script" uid="uid://bpe0nh3tr27fm" path="res://groumd.gd" id="1_akhdm"]
+[ext_resource type="PackedScene" uid="uid://wfctjv8ykitj" path="res://asset/Run_cyan.tscn" id="2_akhdm"]
+[ext_resource type="PackedScene" uid="uid://b1nxooamyacfn" path="res://asset/Sneak Walk_cyan.tscn" id="3_xgyfs"]
+[ext_resource type="PackedScene" uid="uid://cclutrh1tfogt" path="res://asset/Two Handed Sword Death_cyan.tscn" id="4_3wdux"]
+[ext_resource type="PackedScene" uid="uid://bwslbqqh5ky1o" path="res://asset/Brick wall.tscn" id="5_7wssp"]
+[ext_resource type="PackedScene" uid="uid://b33ocik46bmr5" path="res://asset/Rocks.tscn" id="6_y7f1n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vu5md"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_myxha"]
+size = Vector3(60, 2, 60)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_akhdm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_vu5md")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_myxha")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.970092, -0.231296, -0.0736414, 0.234902, 0.818083, 0.524939, -0.0611716, -0.526538, 0.847948, 252.342, 91.0992, 45.9776)
+light_color = Color(0.83335, 0.295626, 3.85046e-07, 1)
+light_energy = 6.172
+light_specular = 3.424
+shadow_enabled = true
+
+[node name="Run4" parent="." instance=ExtResource("2_akhdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="Run2" parent="." instance=ExtResource("2_akhdm")]
+
+[node name="Run3" parent="." instance=ExtResource("2_akhdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.25, -0.69065, 0.678603, 0.0669873, 0.711516, 0.699469, -0.965926, -0.129409, 0.224144, 9, 6, 7)
+current = true
+
+[node name="Sneak_Walk" parent="." instance=ExtResource("3_xgyfs")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -5, 0, 9)
+
+[node name="die" parent="." instance=ExtResource("4_3wdux")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 7, 0, 4)
+
+[node name="Brick wall" parent="." instance=ExtResource("5_7wssp")]
+transform = Transform3D(-1.74846e-09, 0, -0.04, 0, 0.04, 0, 0.04, 0, -1.74846e-09, 161, -56, 473)
+
+[node name="Root Scene" parent="." instance=ExtResource("6_y7f1n")]
+transform = Transform3D(8.33, 0, 0, 0, 8.33, 0, 0, 0, 8.33, 2, 0, 8)
